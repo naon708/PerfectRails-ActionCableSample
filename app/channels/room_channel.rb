@@ -11,8 +11,21 @@ class RoomChannel < ApplicationCable::Channel
 
   # クライアントサイドから呼び出された時に実行される
   def speak(data)
+    # 受け取ったメッセージをDBに保存
+    message = Message.create!(content: data["message"])
+
     ActionCable.server.broadcast(
-      "room_channel", { message: data["message"] }
+      "room_channel", { message: render_message(message) }
+    )
+  end
+
+  private
+
+  def render_message(message)
+    ApplicationController.render( # コントローラー外からテンプレートをレンダリングできる
+      # 部分テンプレートから生成したHTMLを送信する
+      partial: "messages/message",
+      locals: { message: message }
     )
   end
 end
