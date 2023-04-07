@@ -43,7 +43,8 @@ Rails.application.configure do
   config.action_cable.mount_path = nil
   # 接続先を指定(wss: WebSocket用のセキュアなURIスキーマ)
   config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  # ActionCableへ接続を許容するoriginを設定
+  config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
