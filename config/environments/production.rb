@@ -45,6 +45,9 @@ Rails.application.configure do
   config.action_cable.url = 'wss://example.com/cable'
   # ActionCableへ接続を許容するoriginを設定
   config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  # 1プロセスにつき使うスレッド数を指定
+  # WebとWebSocketが同一プロセスなのかスタンドアローンなのかによってよしなに設定する
+  config.action_cable.worker_pool_size = 10
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
