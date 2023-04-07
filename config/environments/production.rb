@@ -41,7 +41,8 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain.
   # Web用のサーバーにActionCableがマウントされているのを解除する
   config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
+  # 接続先を指定(wss: WebSocket用のセキュアなURIスキーマ)
+  config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
